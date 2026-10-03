@@ -1,279 +1,42 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GAMEPH</title>
-  <meta name="description" content="GAMEPH game download hub with catalog cards and direct game links." />
-  <style>
-    :root {
-      --bg: #090b11;
-      --bg-2: #1a0a0a;
-      --text: #f6f4f2;
-      --muted: #d0c8c1;
-      --line: rgba(255,255,255,0.15);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at 50% 10%, rgba(141,24,24,0.3), transparent 30%),
-        radial-gradient(circle at 20% 80%, rgba(138, 22, 22, 0.22), transparent 30%),
-        linear-gradient(180deg, #0d0d10, #090b11 60%, #111111 100%);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background: repeating-linear-gradient(
-        135deg,
-        rgba(255,255,255,0.015) 0,
-        rgba(255,255,255,0.015) 2px,
-        transparent 2px,
-        transparent 18px
-      );
-      opacity: 0.5;
-    }
-
-    a { text-decoration: none; color: inherit; }
-
-    .page {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 24px 18px 60px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 8px 0 20px;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .brand {
-      font-size: clamp(26px, 3vw, 38px);
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #f0e9dd;
-      text-shadow: 0 0 22px rgba(255,255,255,0.15);
-    }
-
-    .search-wrap {
-      flex: 1;
-      min-width: 240px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .search {
-      width: min(100%, 440px);
-      padding: 12px 16px;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(17,19,24,0.8);
-      color: var(--text);
-      font-size: 15px;
-      outline: none;
-    }
-
-    .filter-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 8px 0 20px;
-    }
-
-    .filter {
-      background: rgba(17,19,24,0.72);
-      color: var(--text);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 8px;
-      padding: 9px 14px;
-      font-size: 12px;
-      font-weight: 800;
-      cursor: pointer;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .filter.active,
-    .filter:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.4);
-    }
-
-    .catalog {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 18px 18px;
-      align-items: end;
-      margin-top: 10px;
-    }
-
-    .game-card {
-      display: flex;
-      flex-direction: column;
-      min-height: 250px;
-      position: relative;
-    }
-
-    .poster {
-      height: 250px;
-      border-radius: 10px 10px 0 0;
-      background-size: cover;
-      background-position: center;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.38);
-      border: 1px solid rgba(255,255,255,0.12);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .poster::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.18));
-    }
-
-    .title-link {
-      display: block;
-      width: 100%;
-      background: rgba(0,0,0,0.42);
-      border: 1px solid rgba(255,255,255,0.38);
-      border-radius: 0 0 10px 10px;
-      padding: 11px 12px;
-      color: var(--text);
-      font-weight: 800;
-      font-size: 15px;
-      line-height: 1.2;
-      text-align: center;
-      backdrop-filter: blur(2px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-      transition: 0.2s ease;
-    }
-
-    .title-link:hover {
-      background: rgba(0,0,0,0.6);
-      border-color: rgba(255,255,255,0.6);
-      transform: translateY(-1px);
-    }
-
-    @media (max-width: 760px) {
-      .page { padding-left: 12px; padding-right: 12px; }
-      .catalog { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
-      .poster { height: 220px; }
-      .title-link { font-size: 14px; }
-    }
-  </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GAMEPH — Game Download Hub</title>
+<meta name="description" content="GAMEPH game download hub">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#080b12;color:#f5f7fb}a{text-decoration:none;color:inherit}
+header{position:sticky;top:0;z-index:5;background:#06080ddd;backdrop-filter:blur(12px);border-bottom:1px solid #252d3d}
+nav{max-width:1200px;margin:auto;padding:16px 20px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.logo{font-size:24px;font-weight:900;margin-right:auto}.logo b{color:#7c5cff}
+nav a{padding:9px 11px;border-radius:8px;color:#cbd3df;font-size:12px;font-weight:800}nav a:hover{background:#171e2b;color:white}
+.hero{max-width:1200px;margin:auto;padding:90px 20px 65px;background:radial-gradient(circle at 80% 20%,#4721a844,transparent 35%)}
+.hero small{color:#19d3ae;font-weight:900;letter-spacing:2px}.hero h1{font-size:clamp(44px,8vw,82px);line-height:.95;margin:15px 0}.hero h1 span{color:#7c5cff}.hero p{max-width:650px;color:#9ca8ba;font-size:17px;line-height:1.7}
+.btn{display:inline-block;background:#7c5cff;padding:13px 18px;border-radius:10px;font-weight:900;margin-top:15px}
+main{max-width:1200px;margin:auto;padding:0 20px 70px}.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}.search{flex:1;min-width:240px;padding:13px 15px;border-radius:10px;border:1px solid #293244;background:#101621;color:#fff}
+button{padding:10px 13px;border-radius:9px;border:1px solid #293244;background:#101621;color:#cbd3df;font-weight:800;cursor:pointer}button.active,button:hover{background:#7c5cff;color:#fff}
+h2{font-size:30px;margin-top:45px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}.card{background:#111824;border:1px solid #263043;border-radius:15px;padding:18px}.icon{font-size:42px;background:linear-gradient(135deg,#221650,#0c3540);height:130px;border-radius:11px;display:grid;place-items:center}.tag{display:inline-block;margin-top:14px;padding:5px 8px;border-radius:20px;background:#211a40;color:#bcaeff;font-size:10px;font-weight:900}.card h3{margin:10px 0 6px}.card p{color:#9ca8ba;font-size:13px;min-height:40px;line-height:1.5}.download{display:block;text-align:center;background:#19d3ae;color:#06120f;padding:11px;border-radius:9px;font-weight:900;margin-top:14px}
+.notice{margin-top:40px;padding:18px;background:#101621;border:1px solid #263043;border-radius:12px;color:#9ca8ba;font-size:13px;line-height:1.6}footer{text-align:center;border-top:1px solid #252d3d;padding:25px;color:#687487;font-size:12px}
+</style>
 </head>
 <body>
-  <div class="page">
-    <div class="topbar">
-      <div class="brand">GAMEPH</div>
-      <div class="search-wrap">
-        <input id="search" class="search" type="text" placeholder="Search games..." />
-      </div>
-    </div>
-
-    <div class="filter-row">
-      <button class="filter active" data-filter="all">All</button>
-      <button class="filter" data-filter="windows">Windows</button>
-      <button class="filter" data-filter="lowspecs">Low Specs</button>
-      <button class="filter" data-filter="playstation">PS Emu</button>
-      <button class="filter" data-filter="xbox">Xbox Emu</button>
-      <button class="filter" data-filter="software">Software</button>
-    </div>
-
-    <div class="catalog" id="catalog">
-      <article class="game-card" data-category="windows" data-search="awoved sword dark fantasy action">
-        <div class="poster" style="background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=900&q=80');"></div>
-        <a class="title-link" href="https://example.com/awoved.zip" target="_blank">Awoved</a>
-      </article>
-
-      <article class="game-card" data-category="windows" data-search="plague tale requiem survival horror">
-        <div class="poster" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=80');"></div>
-        <a class="title-link" href="https://example.com/plague-tale-requiem.zip" target="_blank">A Plague Tale: Requiem</a>
-      </article>
-
-      <article class="game-card" data-category="windows" data-search="alan wake 2 psychological horror">
-        <div class="poster" style="background-image: url('https://images.unsplash.com/photo-1511884642898-4c92249e20b6?auto=format&fit=crop&w=900&q=80');"></div>
-        <a class="title-link" href="https://example.com/alan-wake-2.zip" target="_blank">Alan Wake 2</a>
-      </article>
-
-      <article class="game-card" data-category="windows" data-search="a way out co-op action adventure">
-        <div class="poster" style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=80');"></div>
-        <a class="title-link" href="https://example.com/a-way-out.zip" target="_blank">A Way Out</a>
-      </article>
-
-      <article class="game-card" data-category="windows" data-search="valhalla viking action">
-        <div class="poster" style="background-image: url('https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?auto=format&fit=crop&w=900&q=80');"></div>
-        <a class="title-link" href="https://example.com/valhalla.zip" target="_blank">Valhalla</a>
-      </article>
-
-      <article class="game-card" data-category="windows" data-search="assassins creed rogue stealth action">
-        <div class="poster" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80');"></div>
-        <a class="title-link" href="https://example.com/assassins-creed-rogue.zip" target="_blank">Assassin's Creed Rogue</a>
-      </article>
-
-      <article class="game-card" data-category="windows" data-search="assassins creed origins adventure">
-        <div class="poster" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80');"></div>
-        <a class="title-link" href="https://example.com/assassins-creed-origins.zip" target="_blank">Assassin's Creed Origins</a>
-      </article>
-
-      <article class="game-card" data-category="windows" data-search="assassins creed syndicate stealth action">
-        <div class="poster" style="background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80');"></div>
-        <a class="title-link" href="https://example.com/assassins-creed-syndicate.zip" target="_blank">Assassin's Creed Syndicate</a>
-      </article>
-
-      <article class="game-card" data-category="windows" data-search="assassins creed odyssey stealth action">
-        <div class="poster" style="background-image: url('https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=900&q=80');"></div>
-        <a class="title-link" href="https://example.com/assassins-creed-odyssey.zip" target="_blank">Assassin's Creed Odyssey</a>
-      </article>
-
-      <article class="game-card" data-category="windows" data-search="assassins creed black flag action pirate">
-        <div class="poster" style="background-image: url('https://images.unsplash.com/photo-1528819622761-6bcf0325d1e2?auto=format&fit=crop&w=900&q=80');"></div>
-        <a class="title-link" href="https://example.com/assassins-creed-black-flag.zip" target="_blank">Assassin's Creed Black Flag</a>
-      </article>
-    </div>
-  </div>
-
-  <script>
-    const searchInput = document.getElementById('search');
-    const filterButtons = [...document.querySelectorAll('.filter')];
-    const cards = [...document.querySelectorAll('.game-card')];
-    let currentFilter = 'all';
-
-    function applyFilters() {
-      const term = searchInput.value.trim().toLowerCase();
-      cards.forEach(card => {
-        const belongs = currentFilter === 'all' || card.dataset.category === currentFilter;
-        const matches = !term || (card.dataset.search + ' ' + card.textContent).toLowerCase().includes(term);
-        card.style.display = belongs && matches ? 'flex' : 'none';
-      });
-    }
-
-    searchInput.addEventListener('input', applyFilters);
-
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        currentFilter = button.dataset.filter;
-        filterButtons.forEach(btn => btn.classList.toggle('active', btn === button));
-        applyFilters();
-      });
-    });
-  </script>
-</body>
-</html>
+<header><nav><a class="logo" href="#home"> <b>GAMEPH</b></a>
+<a href="#home">HOME</a><a href="#lowspecs">LOWSPECS</a><a href="#new">NEW RELEASES</a><a href="#windows">WINDOWS GAMES</a><a href="#playstation">PLAYSTATION EMU</a><a href="#xbox">XBOX EMU</a><a href="#software">SOFTWARES</a></nav></header>
+<section class="hero" id="home"><small>🎮 GAME DOWNLOAD HUB</small><h1>PLAY MORE.<br><span>DOWNLOAD MORE.</span></h1><p>Welcome to GAMEPH. Browse your game collection, low-spec titles, new releases, emulation resources and software.</p><a class="btn" href="#new">Browse Games ↓</a></section>
+<main>
+<div class="tools"><input id="q" class="search" placeholder="Search games or software..."><button class="active" data-cat="all">ALL</button><button data-cat="windows">WINDOWS</button><button data-cat="lowspecs">LOWSPECS</button><button data-cat="playstation">PS EMU</button><button data-cat="xbox">XBOX EMU</button><button data-cat="software">SOFTWARE</button></div>
+<section id="new"><h2>🔥 New Releases</h2><div class="grid">
+<article class="card" data-cat="windows" data-text="new release windows game"><div class="icon">🔥</div><span class="tag">NEW RELEASE</span><h3>Your New Game</h3><p>Replace this title and description with your game information.</p><a class="download" href="#" onclick="return edit()">DOWNLOAD</a></article>
+</div></section>
+<section id="lowspecs"><h2>⚡ Low Specs</h2><div class="grid"><article class="card" data-cat="lowspecs" data-text="low specs game"><div class="icon">⚡</div><span class="tag">LOWSPECS</span><h3>Your Low-Spec Game</h3><p>Games suitable for modest PCs.</p><a class="download" href="#" onclick="return edit()">DOWNLOAD</a></article></div></section>
+<section id="windows"><h2>🪟 Windows Games</h2><div class="grid"><article class="card" data-cat="windows" data-text="windows pc game"><div class="icon">🎮</div><span class="tag">WINDOWS</span><h3>Your Windows Game</h3><p>Add the version, size and requirements here.</p><a class="download" href="#" onclick="return edit()">DOWNLOAD</a></article></div></section>
+<section id="playstation"><h2>🎮 PlayStation EMU</h2><div class="grid"><article class="card" data-cat="playstation" data-text="playstation emulator"><div class="icon">🕹️</div><span class="tag">PS EMU</span><h3>PlayStation Resource</h3><p>Add a permitted emulator or resource link.</p><a class="download" href="#" onclick="return edit()">OPEN LINK</a></article></div></section>
+<section id="xbox"><h2>🟩 Xbox EMU</h2><div class="grid"><article class="card" data-cat="xbox" data-text="xbox emulator"><div class="icon">🟩</div><span class="tag">XBOX EMU</span><h3>Xbox Resource</h3><p>Add a permitted emulator or resource link.</p><a class="download" href="#" onclick="return edit()">OPEN LINK</a></article></div></section>
+<section id="software"><h2>🛠️ Softwares</h2><div class="grid"><article class="card" data-cat="software" data-text="software utility app"><div class="icon">💻</div><span class="tag">SOFTWARE</span><h3>Your Software</h3><p>Add the official/legal download link.</p><a class="download" href="#" onclick="return edit()">DOWNLOAD</a></article></div></section>
+<div class="notice"><b>Download policy:</b> Only link to files you own, have permission to distribute, or that are legally available for redistribution. For commercial games, use an authorized publisher/store download.</div>
+</main><footer>© 2026 GAMEPH</footer>
+<script>
+const q=document.querySelector('#q'),cards=[...document.querySelectorAll('.card')],buttons=[...document.querySelectorAll('button')];let cat='all';
+function run(){let s=q.value.toLowerCase();cards.forEach(c=>c.style.display=((cat==='all'||c.dataset.cat===cat)&&(c.dataset.text+' '+c.innerText).toLowerCase().includes(s))?'block':'none')}
+q.oninput=run;buttons.forEach(b=>b.onclick=()=>{buttons.forEach(x=>x.classList.remove('active'));b.classList.add('active');cat=b.dataset.cat;run()});
+function edit(){alert('Edit this card in index.html and replace href="#" with your legal download URL.');return false}
+</script></body></html>
